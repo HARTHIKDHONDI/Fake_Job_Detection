@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake job Detection System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body style="background-color: #6699cc;">
+<div style="width: fit-content;padding-left: 30%;padding-top: 10%;"> 
+	<h1>Fake job Detector</h1>
+
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="description" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-warning">Predict</button>
+
+    <div class="results">
+
+		{% if prediction == 1 %}
+			<h2 style="color:red;">Looking Spam⚠️job </h2>
+		{% elif prediction == 0 %}
+			<h2 style="color:rgb(242, 247, 242);"><b>Looking Real job</b></h2>
+		{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
